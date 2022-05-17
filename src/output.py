@@ -28,25 +28,6 @@ def show_statistic(
         total_pps += pps
         total_bps += bps
         total_in_flight += in_flight_conn
-        if table:
-            tabulate_text.append((
-                f'{cl.YELLOW}%s' % target.url.host,
-                target.url.port,
-                method,
-                Tools.humanformat(in_flight_conn),
-                Tools.humanformat(pps) + "/s",
-                f'{Tools.humanbits(bps)}/s{cl.RESET}'
-            ))
-        else:
-            logger.info(
-                f"{cl.YELLOW}Ціль:{cl.BLUE} {target.human_repr()}, "
-                f"{cl.YELLOW}Порт:{cl.BLUE} {target.url.port}, "
-                f"{cl.YELLOW}Метод:{cl.BLUE} {method}{method_sig}, "
-                f"{cl.YELLOW}Зʼєднань:{cl.BLUE} {Tools.humanformat(in_flight_conn)}, "
-                f"{cl.YELLOW}Запити:{cl.BLUE} {Tools.humanformat(pps)}/s, "
-                f"{cl.YELLOW}Трафік:{cl.BLUE} {Tools.humanbits(bps)}/s"
-                f"{cl.RESET}"
-            )
 
     if table:
         tabulate_text.append((
